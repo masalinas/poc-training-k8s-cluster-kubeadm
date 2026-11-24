@@ -564,7 +564,11 @@
           <li class="toc-subitem"><a href="#sec-5-5">5.5 Acceso Temporal mediante Port-Forward y Limpieza de Recursos</a></li>
         </ul>
       </li>
-      <li class="toc-item"><a href="#sec-6">6. Resolución de Problemas Frecuentes (Troubleshooting)</a></li>
+      <li class="toc-item"><a href="#sec-6">6. Resolución de Problemas Frecuentes (Troubleshooting)</a>
+        <ul class="toc-sublist">
+          <li class="toc-subitem"><a href="#sec-6-5">6.5 Desalojo de Pods (Evicted) por DiskPressure y Particionamiento LVM</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 
@@ -2066,6 +2070,32 @@ security features and capabilities please refer to
     <div class="alert-title">Fallo 4: "El worker no puede conectarse al puerto 6443 del master"</div>
     <strong>Causa:</strong> El cortafuegos local (UFW) de Ubuntu Server está bloqueando el tráfico en la red privada.<br>
     <strong>Solución:</strong> En el master ejecutar <code>sudo ufw allow 6443/tcp</code> o deshabilitarlo para el laboratorio con <code>sudo ufw disable</code>.
+  </div>
+
+  <div class="alert alert-important" id="sec-6-5">
+    <div class="alert-title">Fallo 5: Desalojo de Pods (Evicted) por "DiskPressure" y Particionamiento LVM por Defecto</div>
+    <p>
+      <strong>Síntomas:</strong> Pods en estado <code>Failed</code> o <code>Evicted</code> (frecuentemente los del Kubernetes Dashboard). En los eventos del pod o logs del kubelet se registra:
+    </p>
+    <pre><code>The node was low on resource: ephemeral-storage. Threshold quantity: 1569603441, available: 1356228Ki.
+Container kubernetes-dashboard was using 1084Ki, request is 0, has larger consumption of ephemeral-storage.</code></pre>
+    <p>
+      <strong>Causa Raíz:</strong> Al instalar Ubuntu Server 22.04 LTS con LVM guiado por defecto, el instalador Subiquity no asigna el 100% del disco al volumen raíz (<code>ubuntu-lv</code>). Reserva ~50% del espacio en el Volume Group sin asignar (~8.2 GB libres en worker de 20 GB; ~11.5 GB libres en master de 25 GB). Al descargar imágenes de contenedores, el disco cae bajo el umbral mínimo del 10%-15% y el kubelet activa <em>DiskPressure</em> desalojando pods.
+    </p>
+    <p>
+      <strong>Diagnóstico:</strong> Comprobar con <code>df -h /</code> (muestra solo ~9.7 GB en worker / ~11.5 GB en master) y con <code>lsblk</code> (muestra la partición <code>sda3</code> con el tamaño total pero <code>ubuntu--vg-ubuntu--lv</code> con solo la mitad asignada).
+    </p>
+    <p>
+      <strong>Solución en Caliente (Worker y Master):</strong>
+    </p>
+    <pre><code># 1. Extender el volumen lógico al 100% del espacio libre restante en el VG
+sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+
+# 2. Redimensionar en caliente el sistema de archivos ext4 en línea
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
+# 3. Purgar los pods desalojados para que el Deployment regenere réplicas limpias
+kubectl delete pods -n kubernetes-dashboard --field-selector=status.phase=Failed</code></pre>
   </div>
 
 </body>

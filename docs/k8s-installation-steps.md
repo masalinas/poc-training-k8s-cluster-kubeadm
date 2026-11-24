@@ -49,6 +49,11 @@
    - [5.4 Verificación de Conectividad HTTP y Acceso Externo](#54-verificación-de-conectividad-http-y-acceso-externo)
    - [5.5 Acceso Temporal mediante Port-Forward y Limpieza de Recursos](#55-acceso-temporal-mediante-port-forward-y-limpieza-de-recursos)
 6. [Resolución de Problemas Frecuentes (Troubleshooting)](#6-resolución-de-problemas-frecuentes-troubleshooting)
+   - [6.1 Error 1: Conexión Rechazada al Apiserver](#error-1-the-connection-to-the-server-1002156443-was-refused)
+   - [6.2 Error 2: CoreDNS en Estado ContainerCreating o Pending](#error-2-coredns-se-queda-indefinidamente-en-estado-containercreating-o-pending)
+   - [6.3 Error 3: Discrepancia en Cgroup Driver de Containerd](#error-3-kubelet-fails-with-cgroup-driver-mismatch)
+   - [6.4 Error 4: Worker Node no Conecta al Master:6443](#error-4-worker-node-not-found-or-cannot-connect-to-master6443)
+   - [6.5 Error 5: Desalojo de Pods (Evicted) por DiskPressure y Particionamiento LVM](#error-5-desalojo-de-pods-evicted-por-diskpressure-y-particionamiento-lvm-por-defecto)
 
 ---
 
@@ -1644,3 +1649,76 @@ kubectl delete deployment,svc nginx-test
 ### Error 4: "Worker node not found or cannot connect to master:6443"
 * **Causa:** Cortafuegos activo en el master bloqueando el puerto 6443 o IP de Host-Only no alcanzable.
 * **Solución:** En el master, verificar `sudo ufw status` (debe estar inactivo o permitir el puerto 6443: `sudo ufw allow 6443/tcp`) y hacer ping a `192.168.56.10` desde el worker.
+
+### Error 5: Desalojo de Pods (Evicted) por DiskPressure y Particionamiento LVM por Defecto
+
+* **Síntomas y Alerta en el Kubelet:**
+  En el Kubernetes Dashboard o ejecutando `kubectl get pods -A` se observan pods en estado `Failed` o `Evicted` (frecuentemente los pods de `kubernetes-dashboard`). Al consultar los eventos del pod o del nodo (`kubectl describe node k8s-worker1` o `journalctl -u kubelet`), se evidencia un mensaje similar al siguiente:
+  ```text
+  The node was low on resource: ephemeral-storage. Threshold quantity: 1569603441, available: 1356228Ki.
+  Container kubernetes-dashboard was using 1084Ki, request is 0, has larger consumption of ephemeral-storage.
+  ```
+  **Desglose técnico del mensaje:**
+  * **ephemeral-storage:** Es el almacenamiento en disco local del nodo utilizado para las capas de escritura de contenedores, logs de pods y volúmenes `emptyDir`.
+  * **Threshold quantity (~1.46 GiB):** Umbral mínimo de espacio libre que exige el `kubelet` (por defecto suele ser el 10%-15% del sistema de archivos raíz montado en `/`). Al caer por debajo de este límite, se activa la condición de presión de disco (`DiskPressure`).
+  * **available (~1.29 GiB):** Espacio libre real remanente en el nodo. Ante el déficit de espacio, el kubelet comienza a desalojar pods para evitar el colapso del sistema operativo.
+  * **Container request is 0:** El contenedor desalojado no es necesariamente el culpable de agotar el disco. Sin embargo, al no disponer de una reserva mínima (`requests.ephemeral-storage` igual a 0), cualquier consumo supera su cuota y el planificador lo selecciona como primer candidato para desalojo.
+
+* **Causa Raíz:**
+  Al instalar Ubuntu Server 22.04 LTS seleccionando el particionado guiado por defecto con LVM (*"Set up this disk as an LVM group"* en el instalador Subiquity), el instalador no asigna el 100% del disco al volumen lógico raíz (`ubuntu-lv`). Por diseño de ingeniería, solo entrega aproximadamente la mitad (o un mínimo de 10 GB) dentro del Volume Group (`ubuntu-vg`), reservando el resto como espacio libre no asignado para posibles instantáneas (*snapshots*) o particiones separadas:
+  * En la VM worker (disco de 20 GB): la partición `sda3` dispone de 18.2 GB, pero `ubuntu-lv` solo tiene 10.0 GB (quedando ~8.2 GB en reserva sin asignar).
+  * En la VM master (disco de 25 GB): la partición `sda3` dispone de 23 GB, pero `ubuntu-lv` solo tiene 11.5 GB (quedando 11.5 GB en reserva sin asignar).
+  `kubeadm` no modifica ni particiona discos. Al descargarse las imágenes de los contenedores base, Flannel y Kubernetes Dashboard, el espacio libre desciende bajo el umbral del 10% y salta la protección de `ephemeral-storage`.
+
+* **Diagnóstico en los Nodos:**
+  Acceder vía SSH a la máquina virtual afectada (por ejemplo, el nodo worker):
+  ```bash
+  ssh k8sworker1@192.168.56.11
+  ```
+  Verificar la capacidad del sistema de archivos raíz (`/`):
+  ```bash
+  df -h /
+  ```
+  Salida representativa:
+  ```text
+  Filesystem                         Size  Used Avail Use% Mounted on
+  /dev/mapper/ubuntu--vg-ubuntu--lv  9.7G  7.2G  1.5G  83% /
+  ```
+  Comprobar la jerarquía de bloques y el espacio no asignado en el disco con `lsblk`:
+  ```bash
+  lsblk
+  ```
+  Salida representativa:
+  ```text
+  NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+  sda                         8:0    0   20G  0 disk 
+  ├─sda1                      8:1    0    1M  0 part 
+  ├─sda2                      8:2    0  1.8G  0 part /boot
+  └─sda3                      8:3    0 18.2G  0 part 
+    └─ubuntu--vg-ubuntu--lv 253:0    0 10.0G  0 lvm  /
+  ```
+
+* **Solución en Caliente (Aplicar en Worker y Master):**
+  1. Extender el volumen lógico LVM para ocupar el 100% del espacio libre disponible en el Volume Group:
+     ```bash
+     sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+     ```
+  2. Redimensionar en caliente el sistema de archivos ext4 (en línea, sin reiniciar ni desmontar):
+     ```bash
+     sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+     ```
+  3. Confirmar que el sistema de archivos raíz dispone ahora de la totalidad del disco asignado:
+     ```bash
+     df -h /
+     ```
+     *(En `k8s-worker1` el tamaño pasará de 9.7 GB a ~18.2 GB utilizables; en `k8s-master` pasará de 11.5 GB a ~23.0 GB utilizables).*
+
+* **Limpieza de Pods Desalojados:**
+  Una vez ampliado el espacio, limpiar los pods que quedaron en estado `Failed` o `Evicted` para que el controlador despliegue nuevas réplicas sanas:
+  ```bash
+  kubectl delete pods -n kubernetes-dashboard --field-selector=status.phase=Failed
+  ```
+  *(Opcional: purgar todos los pods en estado fallido del cluster)*:
+  ```bash
+  kubectl delete pods --all-namespaces --field-selector=status.phase=Failed
+  ```
