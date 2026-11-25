@@ -1,0 +1,65 @@
+# =============================================================================
+# .gitignore - poc-training-k8s-cluster-kubeadm
+# =============================================================================
+
+# Vagrant & Virtualization
+.vagrant/
+*.box
+
+# Cluster Generated Configs, Tokens & Credentials (Vagrant synced folder)
+configs/
+*.kubeconfig
+kubeconfig
+*.key
+*.token
+*.token.txt
+join.sh
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Linting
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Document & Chrome PDF Compilation Temporaries
+*.tmp
+*.pdf.tmp
+chrome-user-data*/
+.chrome-user-data/
+
+# Logs
+*.log
+
+# Operating Systems & IDEs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
