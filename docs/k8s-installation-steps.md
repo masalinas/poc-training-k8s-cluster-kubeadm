@@ -981,7 +981,7 @@ Vagrant permite describir la topología de máquinas virtuales, interfaces de re
 El proyecto de automatización se organiza en la siguiente estructura de carpetas:
 
 ```text
-poc-kubeadm-ubuntu/
+poc-training-k8s-cluster-kubeadm/
 ├── Vagrantfile                    # Definición de infraestructura y máquinas virtuales
 ├── scripts/
 │   ├── common.sh                 # Aprovisionamiento común (SO, kernel, containerd, k8s)
@@ -1176,7 +1176,7 @@ Para que el alumno levante todo el laboratorio automatizado en su equipo:
 
 2. **Iniciar el cluster:**
    ```bash
-   cd poc-kubeadm-ubuntu
+   cd poc-training-k8s-cluster-kubeadm
    vagrant up
    ```
    *(Vagrant levantará primero `k8s-master`, aprovisionará el control plane y Flannel, guardará el token en `configs/join.sh`, y luego levantará `k8s-worker1` uniéndolo automáticamente).*
