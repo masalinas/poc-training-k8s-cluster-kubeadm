@@ -16,7 +16,7 @@ La guía `docs/k8s-installation-steps.md` cuenta actualmente con una descripció
   - Ejecución de `kubectl proxy` y acceso a la URL del proxy.
   - Autenticación y navegación ilustrada con las dos imágenes del Dashboard.
 - Crear el directorio `docs/images/` y alojar de forma permanente `k8s_dashboard_login.png` y `k8s_dashboard.png`.
-- Adaptar `scripts/generate_html_pdf.py` para renderizar adecuadamente las imágenes y compilar `k8s-installation-steps.pdf`.
+- Adaptar `scripts/generate_html_pdf.py` para renderizar adecuadamente las imágenes y compilar `k8s-cluster-kubeadm.pdf`.
 
 **Non-Goals:**
 - Configurar balanceadores de carga tipo LoadBalancer o Ingress con TLS público para el Dashboard (se preserva el mecanismo oficial de acceso vía `kubectl proxy`).

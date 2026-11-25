@@ -11,7 +11,7 @@ Durante las pruebas reales de despliegue del cluster de Kubernetes sobre Ubuntu 
 - **Persistencia de Red y Desactivación de Cloud-Init:** Creación del archivo de bloqueo `/etc/cloud/cloud-init.disabled` y edición de `/etc/netplan/50-cloud-init.yaml` con verificación mediante `ip a`.
 - **Dependencias de Red Obligatorias:** Instalación de `conntrack` y `socat` antes de ejecutar `kubeadm init` y `kubeadm join` en master y worker, documentando las razones técnicas e integrando los registros de salida reales obtenidos en consola.
 - **Fusión Segura de Kubectl en el Host:** Sustitución de la sobreescritura destructiva de `~/.kube/config` por una metodología de integración y fusión (merge manual y CLI `kubectl config view --flatten`), preservando clusters existentes y fijando el contexto activo.
-- **Actualización de Artefactos de Entrega:** Regeneración de `docs/k8s-installation-steps.md`, `docs/k8s-installation-steps.html`, scripts de automatización y el PDF compilado `k8s-installation-steps.pdf`.
+- **Actualización de Artefactos de Entrega:** Regeneración de `docs/k8s-installation-steps.md`, `docs/k8s-installation-steps.html`, scripts de automatización y el PDF compilado `k8s-cluster-kubeadm.pdf`.
 
 ## Capabilities
 
@@ -26,4 +26,4 @@ Durante las pruebas reales de despliegue del cluster de Kubernetes sobre Ubuntu 
 
 - Actualización de los capítulos de la Sección 1 en `docs/k8s-installation-steps.md` y `docs/k8s-installation-steps.html`.
 - Incorporación de dependencias `conntrack` y `socat` en `scripts/common.sh`.
-- Recompilación del entregable final `k8s-installation-steps.pdf`.
+- Recompilación del entregable final `k8s-cluster-kubeadm.pdf`.

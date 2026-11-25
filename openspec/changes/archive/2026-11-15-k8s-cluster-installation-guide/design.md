@@ -2,7 +2,7 @@
 
 ## Context
 
-Para la creación del primer capítulo del curso sobre Kubernetes en producción (ver `proposal.md` - Why), se debe formalizar la arquitectura de infraestructura virtualizada, la configuración técnica de red, la automatización con Vagrant y el pipeline de compilación del documento final en formato PDF (`k8s-installation-steps.pdf`). El documento se estructurará en dos secciones: Sección 1 (Manual) y Sección 2 (Automatizada con Vagrant).
+Para la creación del primer capítulo del curso sobre Kubernetes en producción (ver `proposal.md` - Why), se debe formalizar la arquitectura de infraestructura virtualizada, la configuración técnica de red, la automatización con Vagrant y el pipeline de compilación del documento final en formato PDF (`k8s-cluster-kubeadm.pdf`). El documento se estructurará en dos secciones: Sección 1 (Manual) y Sección 2 (Automatizada con Vagrant).
 
 ## Goals / Non-Goals
 
@@ -10,7 +10,7 @@ Para la creación del primer capítulo del curso sobre Kubernetes en producción
 - Establecer una arquitectura de laboratorio virtualizada en VirtualBox 7.0 que sea 100% reproducible y aislada de los cambios de red física (Wi-Fi, cambios de IP en host).
 - Documentar los comandos precisos y diferenciados tipográficamente para la Sección 1: preparación manual de los nodos, instalación de componentes modernos de Kubernetes (v1.31) y despliegue del Dashboard.
 - Diseñar la Sección 2 con un `Vagrantfile` multi-nodo y scripts shell de aprovisionamiento desatendidos (`provision-common.sh`, `provision-master.sh`, `provision-worker.sh`) para desplegar el laboratorio completo mediante un único comando `vagrant up`.
-- Definir el método de maquetación y generación del PDF `k8s-installation-steps.pdf` integrando ambas secciones de forma clara y profesional.
+- Definir el método de maquetación y generación del PDF `k8s-cluster-kubeadm.pdf` integrando ambas secciones de forma clara y profesional.
 
 **Non-Goals:**
 - Despliegue de Alta Disponibilidad (HA) multi-master (etcd externo / HAProxy), priorizando la viabilidad de recursos en los equipos de los alumnos.
@@ -48,7 +48,7 @@ Para la creación del primer capítulo del curso sobre Kubernetes en producción
 - **Razón:** Vagrant define el orden secuencial de arranque (master primero, worker después), permitiendo que la sincronización del token ocurra a través de la carpeta montada `/vagrant` sin necesidad de servidores externos.
 - **Alternativas consideradas:** Terraform (más orientado a nubes públicas), Ansible solo (requiere que las VMs ya existan).
 
-### Decisión 6: Generación y Maquetación del PDF (`k8s-installation-steps.pdf`)
+### Decisión 6: Generación y Maquetación del PDF (`k8s-cluster-kubeadm.pdf`)
 - **Elección:** Maquetación del documento en HTML5/CSS3 profesional con soporte `@page`, fuentes del sistema, cajas de notas visuales, bloques de comandos coloreados y exportación a PDF mediante motor Chromium / Chrome Headless (`--headless --print-to-pdf`).
 - **Razón:** Produce un acabado gráfico editorial sin requerir la instalación pesada de LaTeX, garantizando que el diseño y la separación visual de comandos y texto sea exacta tanto para la Sección 1 como para la Sección 2.
 - **Alternativas consideradas:** Pandoc con LaTeX (requiere cientos de megabytes en paquetes TeX), LibreOffice CLI (conversión menos controlada a nivel de estilos CSS).

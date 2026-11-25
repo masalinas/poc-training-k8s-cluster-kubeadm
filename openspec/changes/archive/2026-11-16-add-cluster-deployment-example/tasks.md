@@ -10,8 +10,8 @@
 ## 2. Actualización del Generador HTML y Compilación PDF
 
 - [x] 2.1 Actualizar `scripts/generate_html_pdf.py` para integrar la nueva Sección 4 en la plantilla HTML y renumerar la Sección 5 de Troubleshooting, aplicando las clases de estilo tipográfico para bloques de comandos y terminales.
-- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar el documento final `k8s-installation-steps.pdf`, verificando que el script finalice con código de retorno 0 y el PDF exista en la raíz del proyecto.
-- [x] 2.3 Actualizar `scripts/generate_html_pdf.py` para integrar la subsección 4.5 de `port-forward` y borrado de recursos, y recompilar el entregable `k8s-installation-steps.pdf`.
+- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar el documento final `k8s-cluster-kubeadm.pdf`, verificando que el script finalice con código de retorno 0 y el PDF exista en la raíz del proyecto.
+- [x] 2.3 Actualizar `scripts/generate_html_pdf.py` para integrar la subsección 4.5 de `port-forward` y borrado de recursos, y recompilar el entregable `k8s-cluster-kubeadm.pdf`.
 
 ## 3. Verificación de Calidad y Consistencia
 

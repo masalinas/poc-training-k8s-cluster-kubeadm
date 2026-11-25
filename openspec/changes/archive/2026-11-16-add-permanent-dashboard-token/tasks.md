@@ -8,7 +8,7 @@
 ## 2. Actualización de Plantilla HTML y Compilación PDF
 
 - [x] 2.1 Actualizar la subsección 4.5 en `scripts/generate_html_pdf.py` con el manifiesto `admin-user-secret.yaml`, comandos formateados y el bloque `.alert-warning`.
-- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-installation-steps.pdf`, verificando que el script finalice con código de salida 0.
+- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-cluster-kubeadm.pdf`, verificando que el script finalice con código de salida 0.
 
 ## 3. Verificación de Calidad
 

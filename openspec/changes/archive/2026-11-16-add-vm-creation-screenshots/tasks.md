@@ -15,7 +15,7 @@
 ## 3. Actualización de Plantilla HTML y Compilación PDF
 
 - [x] 3.1 Actualizar `scripts/generate_html_pdf.py` con estilos CSS `.step-figure` y `.step-caption` que eviten saltos de página indebidos (`page-break-inside: avoid`) e integrar el bloque HTML de las 41 imágenes en la subsección 2.2.
-- [x] 3.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-installation-steps.pdf`, verificando que el script finalice con código de salida 0.
+- [x] 3.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-cluster-kubeadm.pdf`, verificando que el script finalice con código de salida 0.
 
 ## 4. Verificación de Calidad
 

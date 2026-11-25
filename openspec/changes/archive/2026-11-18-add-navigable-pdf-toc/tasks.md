@@ -12,10 +12,10 @@
 
 ## 3. Compilación y Validación de Navegación en PDF y HTML
 
-- [x] 3.1 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-installation-steps.pdf`, verificando salida exitosa con código de retorno 0.
+- [x] 3.1 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-cluster-kubeadm.pdf`, verificando salida exitosa con código de retorno 0.
 - [x] 3.2 Inspeccionar y validar la presencia de enlaces internos funcionales en el índice del documento PDF compilado y comprobar la ausencia de saltos de página anómalos o desbordamientos visuales.
 
 ## 4. Inyección de Marcadores de PDF (Outlines) para el Panel Lateral
 
 - [x] 4.1 Implementar la función de adición de marcadores jerárquicos (Document Outlines) en `scripts/generate_html_pdf.py` utilizando `pypdf` para extraer destinos y construir el árbol de navegación.
-- [x] 4.2 Recompilar `k8s-installation-steps.pdf` y verificar la existencia del diccionario `/Outlines` y la correcta jerarquía y numeración de páginas en el panel lateral.
+- [x] 4.2 Recompilar `k8s-cluster-kubeadm.pdf` y verificar la existencia del diccionario `/Outlines` y la correcta jerarquía y numeración de páginas en el panel lateral.

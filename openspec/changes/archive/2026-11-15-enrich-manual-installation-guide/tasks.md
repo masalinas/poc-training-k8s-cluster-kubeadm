@@ -21,7 +21,7 @@
 
 - [x] 4.1 Reestructurar y redactar los capítulos actualizados en `docs/k8s-installation-steps.md` manteniendo la separación entre la Sección 1 (Manual) y la Sección 2 (Automatizada).
 - [x] 4.2 Actualizar el archivo HTML `docs/k8s-installation-steps.html` y el script generador `scripts/generate_html_pdf.py`, garantizando el escape de entidades HTML (`&gt;&gt;`, `&lt;&lt;EOF`, etc.) y estilos CSS anti-desbordamiento sin barras de scroll.
-- [x] 4.3 Ejecutar el pipeline de compilación `python3 scripts/generate_html_pdf.py` y validar la correcta generación del archivo entregable `k8s-installation-steps.pdf` en la raíz del proyecto.
+- [x] 4.3 Ejecutar el pipeline de compilación `python3 scripts/generate_html_pdf.py` y validar la correcta generación del archivo entregable `k8s-cluster-kubeadm.pdf` en la raíz del proyecto.
 
 ## Workflow follow-up
 

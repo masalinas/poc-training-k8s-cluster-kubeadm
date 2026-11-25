@@ -133,7 +133,7 @@ poc-training-k8s-cluster-kubeadm/
 ├── openspec/                         # Especificaciones y trazabilidad de cambios del proyecto
 │   ├── specs/                        # Capacidades normativas activas del laboratorio
 │   └── changes/                      # Historial de cambios y validaciones arquitectónicas
-├── k8s-installation-steps.pdf        # Entregable oficial compilado en PDF de alta fidelidad editorial
+├── k8s-cluster-kubeadm.pdf           # Entregable oficial compilado en PDF de alta fidelidad editorial
 └── README.md                         # Presentación ejecutiva y técnica del repositorio
 ```
 
@@ -462,7 +462,7 @@ A continuación se documentan los 5 incidentes reales más frecuentes al despleg
 
 ## 📄 Compilación de la Guía PDF y Documentación Editorial
 
-El entregable oficial de este laboratorio, [`k8s-installation-steps.pdf`](file:///home/miguel/git/poc-training-k8s-cluster-kubeadm/k8s-installation-steps.pdf), se encuentra precompilado en la raíz del repositorio.
+El entregable oficial de este laboratorio, [`k8s-cluster-kubeadm.pdf`](file:///home/miguel/git/poc-training-k8s-cluster-kubeadm/k8s-cluster-kubeadm.pdf), se encuentra precompilado en la raíz del repositorio.
 
 Este documento técnico de alta fidelidad editorial (con maquetación A4, tipografía Inter y JetBrains Mono, numeración de páginas, reglas `@page` y árbol navegable de marcadores PDF) puede regenerarse automáticamente mediante el pipeline de Python incluido en el proyecto:
 

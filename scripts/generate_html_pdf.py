@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # =============================================================================
 # scripts/generate_html_pdf.py
-# Genera el documento HTML profesional y compila k8s-installation-steps.pdf
+# Genera el documento HTML profesional y compila k8s-cluster-kubeadm.pdf
 # =============================================================================
 import os
 import subprocess
@@ -10,7 +10,7 @@ import shutil
 WORKSPACE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DOCS_DIR = os.path.join(WORKSPACE_DIR, "docs")
 HTML_PATH = os.path.join(DOCS_DIR, "k8s-installation-steps.html")
-PDF_PATH = os.path.join(WORKSPACE_DIR, "k8s-installation-steps.pdf")
+PDF_PATH = os.path.join(WORKSPACE_DIR, "k8s-cluster-kubeadm.pdf")
 
 HTML_CONTENT = r"""<!DOCTYPE html>
 <html lang="es">

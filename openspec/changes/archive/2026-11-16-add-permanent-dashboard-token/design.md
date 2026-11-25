@@ -26,7 +26,7 @@ Ver `proposal.md` para la motivación general.
 - Documentar el comando de extracción y decodificación:
   `kubectl get secret admin-user-secret -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d`
 - Incluir una advertencia explícita (`[!WARNING]` / `.alert-warning`) indicando que esta práctica no es segura en entornos productivos al carecer de caducidad y rotación automática, pero es admitida por comodidad en el laboratorio local.
-- Sincronizar la plantilla HTML y estilos en `scripts/generate_html_pdf.py` y recompilar `k8s-installation-steps.pdf`.
+- Sincronizar la plantilla HTML y estilos en `scripts/generate_html_pdf.py` y recompilar `k8s-cluster-kubeadm.pdf`.
 
 **Non-Goals:**
 - No eliminar el método estándar de generación temporal `kubectl -n kubernetes-dashboard create token admin-user`. El token permanente se presenta como alternativa de laboratorio complementaria.

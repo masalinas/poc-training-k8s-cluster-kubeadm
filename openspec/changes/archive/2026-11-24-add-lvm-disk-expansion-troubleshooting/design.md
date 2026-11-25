@@ -4,7 +4,7 @@
 
 Ver `proposal.md` para la motivación general del cambio. La guía técnica de instalación de Kubernetes se mantiene de forma dual en el repositorio:
 1. Archivo fuente en Markdown: `docs/k8s-installation-steps.md`.
-2. Archivo script generador de HTML/PDF: `scripts/generate_html_pdf.py`, que contiene la plantilla HTML y la estructura de navegación `OUTLINE_STRUCTURE` utilizada para compilar `docs/k8s-installation-steps.html` y `k8s-installation-steps.pdf`.
+2. Archivo script generador de HTML/PDF: `scripts/generate_html_pdf.py`, que contiene la plantilla HTML y la estructura de navegación `OUTLINE_STRUCTURE` utilizada para compilar `docs/k8s-installation-steps.html` y `k8s-cluster-kubeadm.pdf`.
 
 El apartado 6 de la guía contiene actualmente cuatro casos típicos de error (Error 1 a Error 4). La incorporación del problema de LVM requiere coherencia estilística, técnica y tipográfica con el resto del manual.
 
@@ -20,7 +20,7 @@ El apartado 6 de la guía contiene actualmente cuatro casos típicos de error (E
   5. Limpieza de pods en estado Failed/Evicted con `kubectl delete pods --field-selector=status.phase=Failed`.
 - Actualizar el índice general en la Tabla de Contenidos de `docs/k8s-installation-steps.md`.
 - Sincronizar el script `scripts/generate_html_pdf.py` incorporando el HTML estilizado y el identificador en `OUTLINE_STRUCTURE`.
-- Compilar los entregables finales (`docs/k8s-installation-steps.html` y `k8s-installation-steps.pdf`).
+- Compilar los entregables finales (`docs/k8s-installation-steps.html` y `k8s-cluster-kubeadm.pdf`).
 
 **Non-Goals:**
 - No modificar los scripts de aprovisionamiento desatendido con Vagrant (`scripts/*.sh`), ya que las cajas base en la nube/Vagrant no emplean el instalador interactivo Subiquity ni bloquean el 50% de disco libre.

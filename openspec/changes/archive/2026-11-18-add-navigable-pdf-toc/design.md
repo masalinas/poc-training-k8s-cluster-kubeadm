@@ -11,7 +11,7 @@ Para detalles sobre la motivación y alcance, consultar `proposal.md`.
 ## Goals / Non-Goals
 
 **Goals:**
-- Proporcionar navegación interactiva e instantánea mediante clics desde el Índice General del archivo PDF generado (`k8s-installation-steps.pdf`) y del HTML (`docs/k8s-installation-steps.html`).
+- Proporcionar navegación interactiva e instantánea mediante clics desde el Índice General del archivo PDF generado (`k8s-cluster-kubeadm.pdf`) y del HTML (`docs/k8s-installation-steps.html`).
 - Asignar atributos `id` normalizados y consistentes a todas las secciones (`h2`), subsecciones (`h3`) y apartados de imágenes (`h4`) en `scripts/generate_html_pdf.py`.
 - Integrar hipervínculos `<a>` en todos los ítems (`.toc-item`) y subítems (`.toc-subitem`) del índice apuntando a los anclajes correspondientes.
 - Configurar reglas tipográficas CSS para `.toc a` que mantengan la apariencia profesional del manual (sin subrayados toscos ni colores incompatibles con la paleta del curso).

@@ -15,7 +15,7 @@ Ver `proposal.md` para la motivación y objetivos generales.
   2. Los 20 pasos visuales de la VM `k8s-master` con sus explicaciones contextuales.
   3. Los 20 pasos visuales de la VM `k8s-worker1` con sus explicaciones contextuales.
 - Actualizar `scripts/generate_html_pdf.py` con clases CSS dedicadas (`.step-figure`, `.step-caption`) con control de salto de página (`page-break-inside: avoid`) para evitar cortes a mitad de imagen.
-- Compilar y validar el documento final `k8s-installation-steps.pdf`.
+- Compilar y validar el documento final `k8s-cluster-kubeadm.pdf`.
 
 **Non-Goals:**
 - No se modifican los pasos de configuración del sistema operativo ni de kubeadm (subsecciones 2.3 a 2.10).

@@ -8,7 +8,7 @@
 ## 2. Sincronización del Generador y Compilación de Entregables (HTML / PDF)
 
 - [x] 2.1 Actualizar el archivo `scripts/generate_html_pdf.py` agregando la plantilla HTML del Error 5 en la sección 6 e incorporando el elemento correspondiente en el array `OUTLINE_STRUCTURE` para los marcadores interactivos del PDF.
-- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` y verificar que se compilen exitosamente `docs/k8s-installation-steps.html` y `k8s-installation-steps.pdf`.
+- [x] 2.2 Ejecutar `python3 scripts/generate_html_pdf.py` y verificar que se compilen exitosamente `docs/k8s-installation-steps.html` y `k8s-cluster-kubeadm.pdf`.
 
 ## 3. Validación y Control de Calidad
 

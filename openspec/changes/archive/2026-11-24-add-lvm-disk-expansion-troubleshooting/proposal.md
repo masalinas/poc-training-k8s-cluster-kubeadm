@@ -17,7 +17,7 @@ Al instalar Ubuntu Server 22.04 con el particionamiento LVM guiado por defecto (
 - **Sincronización con el compilador de entregables (`scripts/generate_html_pdf.py`)**:
   - Incorporar el contenido en la plantilla HTML con el estilo corporativo de alertas de la guía.
   - Actualizar `OUTLINE_STRUCTURE` para incluir el marcador jerárquico del PDF interactivo.
-  - Recompilar `docs/k8s-installation-steps.html` y `k8s-installation-steps.pdf`.
+  - Recompilar `docs/k8s-installation-steps.html` y `k8s-cluster-kubeadm.pdf`.
 
 ## Capabilities
 
@@ -30,5 +30,5 @@ Al instalar Ubuntu Server 22.04 con el particionamiento LVM guiado por defecto (
 ## Impact
 
 - **Documentación técnica:** Modificación de `docs/k8s-installation-steps.md`.
-- **Herramientas de compilación y entregables:** Modificación de `scripts/generate_html_pdf.py` y regeneración de `docs/k8s-installation-steps.html` y `k8s-installation-steps.pdf`.
+- **Herramientas de compilación y entregables:** Modificación de `scripts/generate_html_pdf.py` y regeneración de `docs/k8s-installation-steps.html` y `k8s-cluster-kubeadm.pdf`.
 - **Scripts de aprovisionamiento:** No se alteran los scripts existentes; se trata de una ampliación documental y metodológica para alumnos del curso.

@@ -10,7 +10,7 @@ El aprovisionamiento manual de máquinas virtuales en VirtualBox para un cluster
 - **Paso a Paso Visual para VM Master:** Inclusión de las 20 capturas secuenciales (`step_01.png` a `step_20.png`) alojadas en `docs/images/master/`, abarcando desde la definición de nombre y recursos de hardware (2 vCPUs, 3 GB RAM, 25 GB disco) hasta la instalación de Ubuntu Server 22.04.5 y el reinicio final, acompañadas de explicaciones concisas.
 - **Paso a Paso Visual para VM Worker:** Inclusión de las 20 capturas secuenciales (`step_01.png` a `step_20.png`) alojadas en `docs/images/worker/`, detallando las especificaciones específicas (2 vCPUs, 2 GB RAM, 20 GB disco), configuración de adaptadores NAT + Host-Only y el asistente de instalación.
 - **Reestructuración de la Sección 2.2:** Integración ordenada en la sección *2.2 Creación y Configuración de VMs en VirtualBox 7.0* de `docs/k8s-installation-steps.md` y `docs/k8s-installation-steps.html`.
-- **Actualización de Scripts y Compilación:** Actualización del generador de PDF `scripts/generate_html_pdf.py` para soportar las nuevas 41 imágenes con diseño estructurado y recompilación de `k8s-installation-steps.pdf`.
+- **Actualización de Scripts y Compilación:** Actualización del generador de PDF `scripts/generate_html_pdf.py` para soportar las nuevas 41 imágenes con diseño estructurado y recompilación de `k8s-cluster-kubeadm.pdf`.
 
 ## Capabilities
 
@@ -25,4 +25,4 @@ El aprovisionamiento manual de máquinas virtuales en VirtualBox para un cluster
 - Nuevos archivos de imagen organizados en `docs/images/master/`, `docs/images/worker/` y `docs/images/step_00.png`.
 - Modificación del documento Markdown `docs/k8s-installation-steps.md` en la subsección 2.2.
 - Modificación de la plantilla HTML y estilos en `scripts/generate_html_pdf.py` para formatear adecuadamente las figuras y captions de las 41 imágenes.
-- Recompilación del PDF entregable `k8s-installation-steps.pdf`.
+- Recompilación del PDF entregable `k8s-cluster-kubeadm.pdf`.

@@ -21,7 +21,7 @@ La sección de Kubernetes Dashboard en la guía técnica del cluster requiere ac
     - `k8s_dashboard_login.png`: Captura de pantalla de la interfaz de inicio de sesión por token del Dashboard.
     - `k8s_dashboard.png`: Captura de pantalla del interior del Dashboard mostrando la carga de trabajo y recursos del namespace `kubernetes-dashboard`.
   - Inserción de ambas imágenes en el flujo didáctico del documento Markdown.
-- **Actualización de Entregables:** Sincronización del generador `scripts/generate_html_pdf.py` para soportar las imágenes y regeneración de `docs/k8s-installation-steps.html` y del PDF compilado `k8s-installation-steps.pdf`.
+- **Actualización de Entregables:** Sincronización del generador `scripts/generate_html_pdf.py` para soportar las imágenes y regeneración de `docs/k8s-installation-steps.html` y del PDF compilado `k8s-cluster-kubeadm.pdf`.
 
 ## Capabilities
 
@@ -36,4 +36,4 @@ La sección de Kubernetes Dashboard en la guía técnica del cluster requiere ac
 - Documentación: enriquecimiento de la sección correspondiente en `docs/k8s-installation-steps.md`.
 - Activos del proyecto: nuevo directorio `docs/images/` conteniendo `k8s_dashboard_login.png` y `k8s_dashboard.png`.
 - Scripts de publicación: adaptación de `scripts/generate_html_pdf.py` para renderizar las imágenes en HTML y PDF.
-- Entregable final: recompilación de `k8s-installation-steps.pdf`.
+- Entregable final: recompilación de `k8s-cluster-kubeadm.pdf`.

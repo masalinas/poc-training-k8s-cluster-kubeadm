@@ -3,7 +3,7 @@
 
 **Autor:** Equipo Docente de Kubernetes  
 **Documento Oficial del Curso:** Capítulo 1 - Despliegue de Infraestructura  
-**Entregable:** `k8s-installation-steps.pdf`
+**Entregable:** `k8s-cluster-kubeadm.pdf`
 
 ---
 

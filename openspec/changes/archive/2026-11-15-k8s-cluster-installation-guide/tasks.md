@@ -14,5 +14,5 @@
 ## 3. Maquetación y Generación del Documento PDF
 
 - [x] 3.1 Diseñar la plantilla de presentación HTML/CSS con soporte para impresión A4 conteniendo ambas secciones (Manual y Vagrant), índice estructurado, diagramas de arquitectura en bloques destacados y estilos contrastados para comandos monospace.
-- [x] 3.2 Compilar y generar el documento final `k8s-installation-steps.pdf` en la raíz del espacio de trabajo utilizando Google Chrome Headless (`--headless --print-to-pdf`).
-- [x] 3.3 Verificar la existencia, integridad y paginación del archivo `k8s-installation-steps.pdf` resultante comprobando que contiene las dos secciones completas.
+- [x] 3.2 Compilar y generar el documento final `k8s-cluster-kubeadm.pdf` en la raíz del espacio de trabajo utilizando Google Chrome Headless (`--headless --print-to-pdf`).
+- [x] 3.3 Verificar la existencia, integridad y paginación del archivo `k8s-cluster-kubeadm.pdf` resultante comprobando que contiene las dos secciones completas.

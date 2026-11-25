@@ -11,7 +11,7 @@
 ## 3. Actualización de Estilos y Generación HTML/PDF
 
 - [x] 3.1 Actualizar `scripts/generate_html_pdf.py` para reflejar la Sección 3 de Dashboard con su banner y figuras, renumerar la Sección 4 de Nginx y la Sección 6 de Troubleshooting.
-- [x] 3.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-installation-steps.pdf`, verificando que el script finalice con código de salida 0 y el PDF se genere correctamente.
+- [x] 3.2 Ejecutar `python3 scripts/generate_html_pdf.py` para regenerar `docs/k8s-installation-steps.html` y compilar `k8s-cluster-kubeadm.pdf`, verificando que el script finalice con código de salida 0 y el PDF se genere correctamente.
 
 ## 4. Verificación de Calidad
 

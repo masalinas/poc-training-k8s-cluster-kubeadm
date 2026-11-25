@@ -13,7 +13,7 @@ Tras completar la instalación del cluster de Kubernetes (tanto de forma manual 
   - Consulta del servicio (`kubectl get services -o wide`) e identificación del puerto asignado en el rango 30000-32767.
   - Verificación del acceso desde el anfitrión o navegador usando las IPs de los nodos (`192.168.56.10` y `192.168.56.11`) mediante peticiones HTTP (curl y navegador web) y validación de la página de bienvenida de Nginx.
 - **Actualización del Índice y Estructura:** Actualización de la Tabla de Contenidos de `docs/k8s-installation-steps.md` y reordenación de la sección de Resolución de Problemas (Troubleshooting) a la Sección 5.
-- **Sincronización de Formatos de Publicación:** Actualización de `scripts/generate_html_pdf.py` para reflejar la nueva sección y regeneración de `docs/k8s-installation-steps.html` y del PDF compilado `k8s-installation-steps.pdf`.
+- **Sincronización de Formatos de Publicación:** Actualización de `scripts/generate_html_pdf.py` para reflejar la nueva sección y regeneración de `docs/k8s-installation-steps.html` y del PDF compilado `k8s-cluster-kubeadm.pdf`.
 
 ## Capabilities
 
@@ -27,4 +27,4 @@ Tras completar la instalación del cluster de Kubernetes (tanto de forma manual 
 
 - Documentación técnica: modificación de `docs/k8s-installation-steps.md`.
 - Scripts de generación de entregables: actualización de `scripts/generate_html_pdf.py`.
-- Entregables generados: actualización de `docs/k8s-installation-steps.html` y recompilación de `k8s-installation-steps.pdf`.
+- Entregables generados: actualización de `docs/k8s-installation-steps.html` y recompilación de `k8s-cluster-kubeadm.pdf`.

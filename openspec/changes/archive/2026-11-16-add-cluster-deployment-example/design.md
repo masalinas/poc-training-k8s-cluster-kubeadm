@@ -17,7 +17,7 @@ El usuario solicita incorporar un ejemplo práctico de despliegue definido en `/
 - Reordenar la sección de "Resolución de Problemas Frecuentes (Troubleshooting)" como Sección 5 (`## 5. Resolución de Problemas Frecuentes (Troubleshooting)`).
 - Actualizar la Tabla de Contenidos al inicio de la guía reflejando la nueva sección y sus subapartados.
 - Adaptar las explicaciones breves e inglés informal de `SAMPLE.md` a la prosa técnica pedagógica en español que caracteriza el resto de la guía, manteniendo los comandos y salidas reales de consola íntegros.
-- Actualizar `scripts/generate_html_pdf.py` para sincronizar `docs/k8s-installation-steps.html` y compilar el entregable final `k8s-installation-steps.pdf`.
+- Actualizar `scripts/generate_html_pdf.py` para sincronizar `docs/k8s-installation-steps.html` y compilar el entregable final `k8s-cluster-kubeadm.pdf`.
 
 **Non-Goals:**
 - Modificar scripts de infraestructura (`scripts/master.sh`, `scripts/worker.sh`, `scripts/common.sh`) o el `Vagrantfile`.
@@ -42,7 +42,7 @@ El usuario solicita incorporar un ejemplo práctico de despliegue definido en `/
   - Aclaración de que la petición responde en cualquier nodo del cluster (master o worker) gracias al enrutamiento de red de `kube-proxy`.
 
 ### Decisión 3: Flujo de actualización de artefactos
-- **Elección:** Actualizar primero `docs/k8s-installation-steps.md`, trasladar los cambios al generador `scripts/generate_html_pdf.py` y compilar `k8s-installation-steps.pdf` con validación de existencia y tamaño.
+- **Elección:** Actualizar primero `docs/k8s-installation-steps.md`, trasladar los cambios al generador `scripts/generate_html_pdf.py` y compilar `k8s-cluster-kubeadm.pdf` con validación de existencia y tamaño.
 
 ## Risks / Trade-offs
 
